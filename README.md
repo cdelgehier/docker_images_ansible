@@ -16,5 +16,8 @@ This repository contains **Dockerfile** of [Ansible](http://www.ansible.com/) fo
 `docker run -ti --rm cdelgehier/docker_images_ansible:2.5_centos_7 bash`
 or
 ```
-docker run --detach --privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro cdelgehier/docker_images_ansible:2.5_centos_7 /usr/lib/systemd/systemd
+docker run --detach --privileged \
+  --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro \
+  cdelgehier/docker_images_ansible:2.5_centos_7 \
+  /usr/lib/systemd/systemd
 ```
