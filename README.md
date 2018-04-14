@@ -1,4 +1,3 @@
-[![](https://images.microbadger.com/badges/version/cdelgehier/docker_images_ansible.svg)](https://microbadger.com/images/cdelgehier/docker_images_ansible "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/cdelgehier/docker_images_ansible.svg)](https://microbadger.com/images/cdelgehier/docker_images_ansible "Get your own image badge on microbadger.com")
 
 ## Ansible Dockerfile
 
