@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM debian:9
 MAINTAINER Cedric DELGEHIER <cedric.delgehier@laposte.net>
 
 ENV LANG fr_FR.UTF-8
@@ -16,7 +16,11 @@ RUN \
     rm -f /lib/systemd/system/anaconda.target.wants/*; \
     apt update; \
     apt install -y software-properties-common git python-pip python-netaddr; \
-    apt-get update; \
+    echo 'deb http://http.debian.net/debian stretch-backports main' > /etc/apt/sources.list.d/backports.list; \
+    apt update; \
+    rm -rf /var/lib/apt/lists/*; \
+    rm -Rf /usr/share/doc && rm -Rf /usr/share/man; \
+    apt clean; \
     pip install --upgrade pip; \
     pip install "ansible>=2.5,<2.6"; \
     install -d -o root -g root -m 755 /etc/ansible/roles; \
