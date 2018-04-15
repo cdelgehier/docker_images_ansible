@@ -1,7 +1,6 @@
 FROM ubuntu:18.04
 MAINTAINER Cedric DELGEHIER <cedric.delgehier@laposte.net>
 
-ENV LANG fr_FR.UTF-8
 ENV container docker
 
 # Install Ansible
