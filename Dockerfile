@@ -20,11 +20,10 @@ RUN \
     rm -rf /var/lib/apt/lists/*; \
     rm -Rf /usr/share/doc && rm -Rf /usr/share/man; \
     apt clean; \
-    pip install --upgrade pip; \
     pip install "ansible>=2.5,<2.6"; \
     install -d -o root -g root -m 755 /etc/ansible/roles; \
-    echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts; \
-    echo -e '[defaults]\nretry_files_enabled = False' > /etc/ansible/ansible.cfg
+    echo '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts; \
+    echo '[defaults]\nretry_files_enabled = False' > /etc/ansible/ansible.cfg
 
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/sbin/init"]
