@@ -16,11 +16,10 @@ RUN \
     apt update; \
     apt install -y software-properties-common git python-pip python-netaddr; \
     apt-get update; \
-    pip install --upgrade pip; \
     pip install "ansible>=2.5,<2.6"; \
     install -d -o root -g root -m 755 /etc/ansible/roles; \
-    echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts; \
-    echo -e '[defaults]\nretry_files_enabled = False' > /etc/ansible/ansible.cfg
+    echo '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts; \
+    echo '[defaults]\nretry_files_enabled = False' > /etc/ansible/ansible.cfg
 
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/sbin/init"]
