@@ -14,7 +14,7 @@ RUN \
     rm -f /lib/systemd/system/basic.target.wants/*; \
     rm -f /lib/systemd/system/anaconda.target.wants/*; \
     apt update; \
-    apt install -y software-properties-common git python-pip python-netaddr; \
+    apt install -y software-properties-common git python-pip python-netaddr systemd systemd-cron; \
     apt-get update; \
     pip install "ansible>=2.5,<2.6"; \
     install -d -o root -g root -m 755 /etc/ansible/roles; \
