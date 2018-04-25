@@ -16,8 +16,10 @@ RUN \
     rm -f /lib/systemd/system/anaconda.target.wants/*; \
     yum -y upgrade; \
     yum -y install epel-release; \
-    yum -y install git sudo python2-pip libselinux-python iproute python-netaddr; \
+    yum -y install git sudo python2-pip libselinux-python iproute python-netaddr rsyslog; \
     yum clean all; \
+    : Can't log kernel messages unless we're privileged; \
+    sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf; \
     pip install --upgrade pip; \
     pip install "ansible>=2.5,<2.6"; \
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers; \
