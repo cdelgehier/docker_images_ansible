@@ -14,7 +14,9 @@ RUN \
     rm -f /lib/systemd/system/basic.target.wants/*; \
     rm -f /lib/systemd/system/anaconda.target.wants/*; \
     apt update; \
-    apt install -y software-properties-common git python-pip python-netaddr; \
+    apt install -y software-properties-common git python-pip python-netaddr rsyslog; \
+    : Can't log kernel messages unless we're privileged; \
+    sed -i 's/^\(module(load="imklog")\)/#\1/' /etc/rsyslog.conf; \
     echo 'deb http://http.debian.net/debian stretch-backports main' > /etc/apt/sources.list.d/backports.list; \
     apt update; \
     rm -rf /var/lib/apt/lists/*; \
