@@ -14,7 +14,7 @@ RUN \
     rm -f /lib/systemd/system/basic.target.wants/*; \
     rm -f /lib/systemd/system/anaconda.target.wants/*; \
     apt update; \
-    apt install -y git python-pip python-netaddr systemd systemd-cron rsyslog; \
+    apt install -y git python-pip python-netaddr systemd systemd-cron rsyslog python3-minimal; \
     : Can't log kernel messages unless we're privileged; \
     sed -i 's/^\(module(load="imklog" permitnonkernelfacility="on"\)/#\1/' /etc/rsyslog.conf; \
     pip install "ansible>=2.5,<2.6"; \
