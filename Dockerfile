@@ -23,4 +23,5 @@ RUN \
     echo '[defaults]\nretry_files_enabled = False' > /etc/ansible/ansible.cfg
 
 VOLUME ["/sys/fs/cgroup"]
+STOPSIGNAL SIGRTMIN+3
 CMD ["/sbin/init"]
