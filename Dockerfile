@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:8
 MAINTAINER Cedric DELGEHIER <cedric.delgehier@laposte.net>
 
 ENV LANG fr_FR.UTF-8
@@ -14,14 +14,18 @@ RUN \
     rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
     rm -f /lib/systemd/system/basic.target.wants/*; \
     rm -f /lib/systemd/system/anaconda.target.wants/*; \
+    systemctl mask dev-mqueue.mount dev-hugepages.mount \
+      systemd-remount-fs.service sys-kernel-config.mount \
+      sys-kernel-debug.mount sys-fs-fuse-connections.mount \
+      systemd-logind.service getty.service getty.target; \
     yum -y upgrade; \
     yum -y install epel-release; \
-    yum -y install git sudo python2-pip libselinux-python iproute python-netaddr rsyslog; \
+    yum -y install git sudo python3 python3-libselinux iproute python3-netaddr rsyslog; \
     yum clean all; \
     : Can't log kernel messages unless we're privileged; \
     sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf; \
-    pip install --upgrade pip; \
-    pip install "ansible>=2.5,<2.6"; \
+    python3 -m pip install --upgrade pip; \
+    python3 -m pip install "ansible>=2.5,<2.6"; \
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers; \
     install -d -o root -g root -m 755 /etc/ansible/roles; \
     echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts; \
