@@ -25,7 +25,7 @@ RUN \
     pip install "ansible>=2.5,<2.6"; \
     install -d -o root -g root -m 755 /etc/ansible/roles; \
     echo '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts; \
-    echo '[defaults]\nretry_files_enabled = False' > /etc/ansible/ansible.cfg
+    echo '[defaults]\nretry_files_enabled = False\nstdout_callback = yaml\ncallback_whitelist = profile_tasks\ndeprecation_warnings = True\n[colors]\ndiff_remove = purple\n[diff]\nalways = yes' > /etc/ansible/ansible.cfg
 
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/sbin/init"]
