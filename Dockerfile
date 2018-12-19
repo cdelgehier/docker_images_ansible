@@ -25,7 +25,7 @@ RUN \
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers; \
     install -d -o root -g root -m 755 /etc/ansible/roles; \
     echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts; \
-    echo -e '[defaults]\nretry_files_enabled = False' > /etc/ansible/ansible.cfg
+    echo -e '[defaults]\nretry_files_enabled = False\nstdout_callback = yaml\ncallback_whitelist = profile_tasks\ndeprecation_warnings = True\n[colors]\ndiff_remove = purple\n[diff]\nalways = yes' > /etc/ansible/ansible.cfg
 
 VOLUME ["/sys/fs/cgroup"]
 CMD ["/usr/sbin/init"]
