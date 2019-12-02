@@ -25,7 +25,7 @@ RUN \
     : Can't log kernel messages unless we're privileged; \
     sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf; \
     python3 -m pip install --upgrade pip; \
-    python3 -m pip install "ansible>=2.5,<2.6"; \
+    python3 -m pip install "ansible>=2.9,<2.10"; \
     sed -i -e 's/^\(Defaults\s*requiretty\)/#--- \1/'  /etc/sudoers; \
     install -d -o root -g root -m 755 /etc/ansible/roles; \
     echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts; \
